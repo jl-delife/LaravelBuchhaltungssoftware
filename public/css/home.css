@@ -1,0 +1,323 @@
+body,
+html {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #afafaf;
+  overflow: hidden;
+}
+body header,
+html header {
+  background: rgba(0, 0, 0, 0.76);
+  position: relative;
+}
+body header .header-content,
+html header .header-content {
+  margin-inline: clamp(5%, 5vw, 10%);
+  padding-block: 3.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+body header .header-content h1,
+html header .header-content h1 {
+  margin: 0;
+  color: white;
+  font-size: clamp(1rem, 5vw, 2.5rem);
+  position: relative;
+}
+body header .header-content h1::after,
+html header .header-content h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 44.3%;
+  height: 10%;
+  background-color: white;
+}
+body header .header-content a,
+html header .header-content a {
+  color: white;
+  text-decoration: none;
+}
+body header .header-content a p,
+html header .header-content a p {
+  font-size: clamp(0.8rem, 3vw, 1.3rem);
+}
+body main,
+html main {
+  margin-inline: clamp(5%, 5vw, 10%);
+}
+body main #welcome,
+html main #welcome {
+  margin-block: 5rem;
+}
+body main h2,
+html main h2 {
+  margin: 0;
+  font-weight: 400;
+  font-size: clamp(1.2rem, 5vw, 1.5rem);
+}
+body main button,
+html main button {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.76);
+  border-radius: 10px;
+  padding-inline: 1rem;
+  cursor: pointer;
+}
+body main .showTransactionsArea .transactionsAreaHeader,
+html main .showTransactionsArea .transactionsAreaHeader {
+  display: flex;
+  justify-content: space-between;
+  padding-block-end: 0.3rem;
+}
+body main .showTransactionsArea article,
+html main .showTransactionsArea article {
+  width: calc(100% - 2rem);
+  height: 40vh;
+  background-color: #d9d9d9;
+  border-radius: 10px;
+  padding-inline: 1rem;
+  padding-block: 0.1rem;
+  overflow-y: scroll;
+}
+body main .showTransactionsArea article p,
+html main .showTransactionsArea article p {
+  font-size: 1.2rem;
+}
+body main .showTransactionsArea .setRange,
+html main .showTransactionsArea .setRange {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+}
+body main .showTransactionsArea .setRange form,
+html main .showTransactionsArea .setRange form {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+}
+body main .showTransactionsArea .setRange form div,
+html main .showTransactionsArea .setRange form div {
+  display: flex;
+  flex-direction: column;
+}
+body main .showTransactionsArea .setRange form div label,
+html main .showTransactionsArea .setRange form div label {
+  display: none;
+  font-size: 0.7rem;
+}
+body main .showTransactionsArea .setRange form div input,
+html main .showTransactionsArea .setRange form div input {
+  border: none;
+  border-radius: 10px;
+  height: 1.5rem;
+  padding-inline: 0.5rem;
+}
+body main .showTransactionsArea .setRange form #submit,
+html main .showTransactionsArea .setRange form #submit {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.76);
+  border-radius: 10px;
+  padding-inline: 1rem;
+  height: 2rem;
+  margin-inline-start: 0.5rem;
+  cursor: pointer;
+}
+@media screen and (max-width: 780px) {
+  body main .showTransactionsArea .setRange,
+html main .showTransactionsArea .setRange {
+    flex-direction: column;
+  }
+  body main .showTransactionsArea .setRange form,
+html main .showTransactionsArea .setRange form {
+    flex-direction: column;
+    width: 100%;
+    row-gap: 0.8rem;
+  }
+  body main .showTransactionsArea .setRange form h2,
+html main .showTransactionsArea .setRange form h2 {
+    display: none;
+  }
+  body main .showTransactionsArea .setRange form div,
+html main .showTransactionsArea .setRange form div {
+    translate: unset;
+    width: 100%;
+    max-width: 30rem;
+  }
+  body main .showTransactionsArea .setRange form div label,
+html main .showTransactionsArea .setRange form div label {
+    display: block;
+  }
+  body main .showTransactionsArea .setRange form div input,
+html main .showTransactionsArea .setRange form div input {
+    width: 100%;
+    max-width: 30rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  body main .showTransactionsArea .transactionsAreaHeader,
+html main .showTransactionsArea .transactionsAreaHeader {
+    flex-direction: column;
+    row-gap: 2rem;
+  }
+  body main .showTransactionsArea .transactionsAreaHeader button,
+html main .showTransactionsArea .transactionsAreaHeader button {
+    order: 1;
+  }
+  body main .showTransactionsArea .transactionsAreaHeader h2,
+html main .showTransactionsArea .transactionsAreaHeader h2 {
+    order: 2;
+  }
+}
+body main .newTransaction,
+html main .newTransaction {
+  display: none;
+}
+body main .newTransaction .transactionsAreaHeader,
+html main .newTransaction .transactionsAreaHeader {
+  display: flex;
+  padding-block-end: 0.3rem;
+}
+body main .newTransaction article,
+html main .newTransaction article {
+  width: calc(100% - 2rem);
+  height: 40vh;
+  background-color: #d9d9d9;
+  border-radius: 10px;
+  padding-inline: 1rem;
+  padding-block: 0.8rem;
+}
+body main .newTransaction article form,
+html main .newTransaction article form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  padding-block-end: 1rem;
+}
+body main .newTransaction article form .inputs,
+html main .newTransaction article form .inputs {
+  display: flex;
+  column-gap: 2rem;
+}
+body main .newTransaction article form .inputs div,
+html main .newTransaction article form .inputs div {
+  display: flex;
+  flex-direction: column;
+}
+body main .newTransaction article form .inputs div label,
+html main .newTransaction article form .inputs div label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+body main .newTransaction article form .inputs div input,
+html main .newTransaction article form .inputs div input {
+  width: 12rem;
+  height: 1.5rem;
+  border: none;
+  border-radius: 10px;
+  padding-inline: 0.5rem;
+}
+body main .newTransaction article form #submitNewTransaction,
+html main .newTransaction article form #submitNewTransaction {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.76);
+  border-radius: 10px;
+  padding-inline: 1rem;
+  height: 1.8rem;
+  margin-inline-start: 0.5rem;
+  cursor: pointer;
+  width: fit-content;
+  margin: 0;
+}
+body main .newTransaction article p,
+html main .newTransaction article p {
+  font-size: 0.8rem;
+}
+@media screen and (max-width: 780px) {
+  body main .newTransaction article,
+html main .newTransaction article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  body main .newTransaction article form,
+html main .newTransaction article form {
+    width: 100%;
+  }
+  body main .newTransaction article form .inputs,
+html main .newTransaction article form .inputs {
+    align-items: center;
+    flex-direction: column;
+    row-gap: 1rem;
+    width: 100%;
+  }
+  body main .newTransaction article form .inputs div,
+html main .newTransaction article form .inputs div {
+    width: 100%;
+    max-width: 30rem;
+  }
+  body main .newTransaction article form .inputs div input,
+html main .newTransaction article form .inputs div input {
+    width: calc(100% - 1rem);
+    max-width: 30rem;
+  }
+  body main .newTransaction article form #submitNewTransaction,
+html main .newTransaction article form #submitNewTransaction {
+    margin-inline: auto;
+  }
+}
+body .fs-12,
+html .fs-12 {
+  font-size: 1.2rem;
+}
+body .bold,
+html .bold {
+  font-weight: bold;
+}
+body .positive,
+html .positive {
+  color: #459332;
+}
+body .negative,
+html .negative {
+  color: #cd4343;
+}
+body .positiveBc,
+html .positiveBc {
+  background-color: #459332;
+}
+body .negativeBc,
+html .negativeBc {
+  background-color: #cd4343;
+}
+body .toastNotification,
+html .toastNotification {
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+  width: fit-content;
+  max-width: 78rem;
+  color: black;
+  border-radius: 9px;
+  text-align: center;
+  padding-inline: 3rem;
+  position: absolute;
+  bottom: -27%;
+  right: 0%;
+  transition: translate 1.5s;
+}
+@media screen and (max-width: 700px) {
+  body .additionalInfo,
+html .additionalInfo {
+    display: none;
+  }
+}
+body #app,
+html #app {
+  margin-top: 0px;
+}
+
+/*# sourceMappingURL=home.css.map */

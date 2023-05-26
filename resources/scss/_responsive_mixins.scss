@@ -1,0 +1,42 @@
+// Measures
+$hpad-desktop: 3.5%;
+$content-top-safezone-desktop: rem-calc(103);
+$content-top-safezone-mobile: rem-calc(103);
+$desktop-header-logo-width: 145px;
+$mobile-header-logo-width: 150px;
+
+$viewport_small:  576px;
+$viewport_medium: 768px;
+$viewport_large:  992px;
+$viewport_xlarge: 1200px;
+$viewport_xxlarge: 1400px;
+
+@mixin small() {
+    @media only screen and (min-width: calculateEm($viewport_small)) {
+        @content;
+    }
+}
+
+@mixin medium() {
+    @media only screen and (min-width: calculateEm($viewport_medium)) {
+        @content;
+    }
+}
+
+@mixin large() {
+    @media only screen and (min-width: calculateEm($viewport_large)) {
+        @content;
+    }
+}
+
+@mixin xlarge() {
+    @media only screen and (min-width: calculateEm($viewport_xlarge)) {
+        @content;
+    }
+}
+
+@mixin variable($minWidth, $maxWidth) {
+    @media only screen and (min-width: calculateEm($minWidth)) and (max-width: calculateEm($maxWidth)) {
+        @content;
+    }
+}

@@ -1,0 +1,319 @@
+body,
+html {
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #afafaf;
+    overflow: hidden;
+
+    header {
+        background: rgba(0, 0, 0, 0.76);
+        position: relative;
+
+        .header-content {
+            margin-inline: clamp(5%, 5vw, 10%);
+            padding-block: 3.2rem;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            h1 {
+                margin: 0;
+                color: white;
+                font-size: clamp(1rem, 5vw, 2.5rem);
+                position: relative;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 44.3%;
+                    height: 10%;
+                    background-color: white;
+                }
+            }
+
+            a {
+                color: white;
+                text-decoration: none;
+
+                p {
+                    font-size: clamp(0.8rem, 3vw, 1.3rem);
+                }
+            }
+        }
+    }
+
+    main {
+        margin-inline: clamp(5%, 5vw, 10%);
+
+        #welcome {
+            margin-block: 5rem;
+        }
+
+        h2 {
+            margin: 0;
+            font-weight: 400;
+            font-size: clamp(1.2rem, 5vw, 1.5rem);
+        }
+
+        button {
+            color: white;
+            background-color: rgba(0, 0, 0, 0.76);
+            border-radius: 10px;
+            padding-inline: 1rem;
+            cursor: pointer;
+        }
+
+        .showTransactionsArea {
+            .transactionsAreaHeader {
+                display: flex;
+                justify-content: space-between;
+                padding-block-end: 0.3rem;
+            }
+
+            article {
+                width: calc(100% - 2rem);
+                height: 40vh;
+                background-color: #d9d9d9;
+                border-radius: 10px;
+                padding-inline: 1rem;
+                padding-block: 0.1rem;
+                overflow-y: scroll;
+
+                p {
+                    font-size: 1.2rem;
+                }
+            }
+
+            .setRange {
+                display: flex;
+                align-items: center;
+                column-gap: 1rem;
+
+                form {
+                    display: flex;
+                    align-items: center;
+                    column-gap: 0.5rem;
+                    div {
+                        display: flex;
+                        flex-direction: column;
+
+                        label {
+                            display: none;
+                            font-size: 0.7rem;
+                        }
+
+                        input {
+                            border: none;
+                            border-radius: 10px;
+                            height: 1.5rem;
+                            padding-inline: 0.5rem;
+                        }
+                    }
+
+                    #submit {
+                        color: white;
+                        background-color: rgba(0, 0, 0, 0.76);
+                        border-radius: 10px;
+                        padding-inline: 1rem;
+                        height: 2rem;
+                        margin-inline-start: 0.5rem;
+                        cursor: pointer;
+                    }
+                }
+
+                @media screen and (max-width: 780px) {
+                    flex-direction: column;
+
+                    form {
+                        flex-direction: column;
+                        width: 100%;
+                        row-gap: 0.8rem;
+
+                        h2 {
+                            display: none;
+                        }
+
+                        div {
+                            translate: unset;
+                            width: 100%;
+                            max-width: 30rem;
+
+                            label {
+                                display: block;
+                            }
+
+                            input {
+                                width: 100%;
+                                max-width: 30rem;
+                            }
+                        }
+                    }
+                }
+            }
+
+            @media screen and (max-width: 500px) {
+                .transactionsAreaHeader {
+                    flex-direction: column;
+                    row-gap: 2rem;
+
+                    button {
+                        order: 1;
+                    }
+
+                    h2 {
+                        order: 2;
+                    }
+                }
+            }
+        }
+
+        .newTransaction {
+            display: none;
+            .transactionsAreaHeader {
+                display: flex;
+                padding-block-end: 0.3rem;
+            }
+
+            article {
+                width: calc(100% - 2rem);
+                height: 40vh;
+                background-color: #d9d9d9;
+                border-radius: 10px;
+                padding-inline: 1rem;
+                padding-block: 0.8rem;
+
+                form {
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: 1rem;
+                    padding-block-end: 1rem;
+
+                    .inputs {
+                        display: flex;
+                        column-gap: 2rem;
+
+                        div {
+                            display: flex;
+                            flex-direction: column;
+
+                            label {
+                                font-size: 0.9rem;
+                                font-weight: 500;
+                            }
+
+                            input {
+                                width: 12rem;
+                                height: 1.5rem;
+                                border: none;
+                                border-radius: 10px;
+                                padding-inline: 0.5rem;
+                            }
+                        }
+                    }
+
+                    #submitNewTransaction {
+                        color: white;
+                        background-color: rgba(0, 0, 0, 0.76);
+                        border-radius: 10px;
+                        padding-inline: 1rem;
+                        height: 1.8rem;
+                        margin-inline-start: 0.5rem;
+                        cursor: pointer;
+                        width: fit-content;
+                        margin: 0;
+                    }
+                }
+
+                p {
+                    font-size: 0.8rem;
+                }
+            }
+
+            @media screen and (max-width: 780px) {
+                article {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    form {
+                        width: 100%;
+                        .inputs {
+                            align-items: center;
+                            flex-direction: column;
+                            row-gap: 1rem;
+                            width: 100%;
+
+                            div {
+                                width: 100%;
+                                max-width: 30rem;
+
+                                input {
+                                    width: calc(100% - 1rem);
+                                    max-width: 30rem;
+                                }
+                            }
+                        }
+
+                        #submitNewTransaction {
+                            margin-inline: auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .fs-12 {
+        font-size: 1.2rem;
+    }
+
+    .bold {
+        font-weight: bold;
+    }
+
+    .positive {
+        color: #459332;
+    }
+
+    .negative {
+        color: #cd4343;
+    }
+
+    .positiveBc {
+        background-color: #459332;
+    }
+
+    .negativeBc {
+        background-color: #cd4343;
+    }
+
+    .toastNotification {
+        display: flex;
+        align-items: center;
+        height: 2.5rem;
+        width: fit-content;
+        max-width: 78rem;
+        color: black;
+        border-radius: 9px;
+        text-align: center;
+        padding-inline: 3rem;
+        position: absolute;
+        bottom: -27%;
+        right: 0%;
+        transition: translate 1.5s;
+    }
+
+    @media screen and (max-width: 700px) {
+        .additionalInfo {
+            display: none;
+        }
+    }
+
+    #app {
+        margin-top: 0px;
+    }
+}
