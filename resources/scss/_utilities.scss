@@ -1,0 +1,321 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  max-width: 2000px;
+  margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+  line-height: 1.5;
+}
+
+h2,
+h3,
+h4 {
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 1.7rem;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+
+  @include medium() {
+    font-size: 2rem;
+  }
+}
+
+h3 {
+  font-size: 1.5rem;
+
+  @include medium() {
+    font-size: 1.75rem;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a.dl_link {
+  color: $color-green;
+  transition: $transition ease-in-out;
+
+  &:hover {
+    color: #88ac54;
+  }
+}
+
+.flow > *:where(:not(:first-child)) {
+  margin-top: var(--flow-space, 1rem);
+}
+
+.flow--space-small {
+  --flow-space: 0.5rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@media (max-width: 768px) {
+  .sr-only--till-tablet {
+    position: absolute;
+    margin: -1px 0 0 -1px;
+    padding: 0;
+    display: block;
+    width: 1px;
+    height: 1px;
+    font-size: 1px;
+    line-height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+    outline: 0;
+  }
+}
+
+@media (max-width: 992px) {
+  .sr-only--till-desktop {
+    position: absolute;
+    margin: -1px 0 0 -1px;
+    padding: 0;
+    display: block;
+    width: 1px;
+    height: 1px;
+    font-size: 1px;
+    line-height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+    outline: 0;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+@include medium() {
+  .text-md-center {
+    text-align: center !important;
+  }
+}
+
+@include large() {
+  .text-lg-center {
+    text-align: center !important;
+  }
+}
+
+.text-right {
+  text-align: right;
+}
+
+@include large() {
+  .text-lg-right {
+    text-align: right !important;
+  }
+}
+
+.text-left {
+  text-align: left;
+}
+
+@include medium() {
+  .text-md-left {
+    text-align: left !important;
+  }
+}
+
+@include large() {
+  .text-lg-left {
+    text-align: left !important;
+  }
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.padding-small {
+  padding: 5%;
+}
+
+@include large() {
+  .padding-small {
+    padding: 5% 25%;
+  }
+}
+
+.padding-medium {
+  padding: 5%;
+}
+
+@include large() {
+  .padding-medium {
+    padding: 5% 20%;
+  }
+}
+
+.padding-large {
+  padding: 5%;
+}
+
+@include large() {
+  .padding-lg-medium {
+    padding: 5% 20%;
+  }
+}
+
+.padding-y {
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.order-1 {
+  order: 1;
+}
+
+@include medium() {
+  .order-md-1 {
+    order: 1;
+  }
+}
+
+.order-2 {
+  order: 2;
+}
+
+@include medium() {
+  .order-md-2 {
+    order: 2;
+  }
+}
+
+@include large() {
+  .order-lg-2 {
+    order: 2;
+  }
+}
+
+.display-none {
+  display: none;
+}
+
+@include medium() {
+  .display-md-none {
+    display: none;
+  }
+
+  .display-md-block {
+    display: block;
+  }
+}
+
+.grid {
+  display: grid;
+}
+
+.grid-align-center {
+  align-items: center;
+}
+
+@include medium() {
+  .grid-col-md-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.grid-col-span-2 {
+  grid-column: span 2;
+}
+
+.grid-row-span-2 {
+  grid-row: span 2;
+}
+
+.flex {
+  display: flex;
+}
+
+.bg-color {
+  background-color: $bg-color-secondary;
+}
+
+.bg-color-grey {
+  background-color: $bg-color-grey;
+}
+
+.bg-color-beige {
+  background-color: $bg-color-beige;
+}
+
+@include large() {
+  .bg-lg-none {
+    background-color: unset;
+  }
+}
+
+.dl_btn {
+  display: block;
+  width: 100%;
+  margin-inline: auto;
+  padding: 8px 40px;
+  text-align: center;
+  font-weight: 600;
+  color: $color-primary;
+  background-color: transparent;
+  border: solid 2px $color-primary;
+  text-decoration: none;
+  transition: $transition;
+
+  &:hover,
+  &:focus-visible {
+    background-color: $color-primary;
+    color: $color-white;
+    outline: none;
+    text-decoration: none;
+  }
+
+  @include small() {
+    width: fit-content;
+  }
+
+  &.align-left {
+    margin-left: 0;
+  }
+
+  &-white {
+    color: $color-white;
+    border: solid 2px $color-white;
+
+    &:hover,
+    &:focus-visible {
+      background-color: $color-white;
+      color: $color-primary;
+      outline: none;
+      text-decoration: none;
+    }
+  }
+}

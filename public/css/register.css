@@ -1,0 +1,137 @@
+body,
+html {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #afafaf;
+  overflow: hidden;
+}
+body header,
+html header {
+  background: rgba(0, 0, 0, 0.76);
+  position: relative;
+}
+body header .header-content,
+html header .header-content {
+  margin-inline: clamp(5%, 5vw, 10%);
+  padding-block: clamp(1rem, 5vw, 3.2rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+body header .header-content h1,
+html header .header-content h1 {
+  margin: 0;
+  color: white;
+  font-size: clamp(1rem, 5vw, 2.5rem);
+  position: relative;
+}
+body header .header-content h1::after,
+html header .header-content h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 44.3%;
+  height: 10%;
+  background-color: white;
+}
+body header .header-content a,
+html header .header-content a {
+  color: white;
+  text-decoration: none;
+}
+body header .header-content a p,
+html header .header-content a p {
+  font-size: clamp(0.8rem, 3vw, 1.3rem);
+}
+body main,
+html main {
+  padding-inline: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body main h2,
+html main h2 {
+  font-size: 2.3rem;
+  padding-block-start: clamp(1rem, 5vw, 5rem);
+  padding-block-end: clamp(2rem, 5vw, 3rem);
+}
+body main form,
+html main form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1rem;
+  max-width: 42rem;
+  width: 100%;
+}
+body main form div,
+html main form div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+body main form div label,
+html main form div label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+body main form div input,
+html main form div input {
+  width: calc(100% - 1rem);
+  height: 1.5rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #d9d9d9;
+  padding-inline: 0.5rem;
+}
+body main form #submit,
+html main form #submit {
+  font-size: 1.4rem;
+  border: none;
+  border-radius: 10px;
+  margin-block-start: 2rem;
+  padding-block: 0.2rem;
+  background-color: #d9d9d9;
+  cursor: pointer;
+  max-width: 17rem;
+  width: 100%;
+}
+body p,
+html p {
+  font-size: 0.85rem;
+  text-align: center;
+}
+body a,
+html a {
+  color: #3457b4;
+  text-decoration: none;
+}
+body .positiveBc,
+html .positiveBc {
+  background-color: #459332;
+}
+body .negativeBc,
+html .negativeBc {
+  background-color: #cd4343;
+}
+body .toastNotification,
+html .toastNotification {
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+  width: fit-content;
+  max-width: 78rem;
+  color: black;
+  border-radius: 9px;
+  text-align: center;
+  padding-inline: 3rem;
+  position: absolute;
+  bottom: -27%;
+  right: 0%;
+  transition: translate 1.5s;
+}
+
+/*# sourceMappingURL=register.css.map */

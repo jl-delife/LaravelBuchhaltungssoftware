@@ -1,0 +1,46 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "mix watch"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "axios": "^1.1.2",
+    "laravel-mix": "^6.0.49",
+    "laravel-vite-plugin": "^0.7.2",
+    "lodash": "^4.17.19",
+    "postcss": "^8.1.14",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.62.1",
+    "sass-loader": "^12.1.0",
+    "sass-resources-loader": "^2.2.5",
+    "vite": "^4.0.0",
+    "volar-service-vetur": "latest",
+    "vue": "^3.3.4",
+    "vue-loader": "^16.2.0",
+    "vue-router": "^4.2.1",
+    "webpack": "^5.83.1"
+  },
+  "dependencies": {
+    "tailwindcss": "^3.3.2"
+  },
+  "name": "buchhaltungssoftware",
+  "description": "<p align=\"center\"><a href=\"https://laravel.com\" target=\"_blank\"><img src=\"https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg\" width=\"400\" alt=\"Laravel Logo\"></a></p>",
+  "version": "1.0.0",
+  "main": "vite.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jl-delife/pressebereich.git"
+  },
+  "author": "Jan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jl-delife/pressebereich/issues"
+  },
+  "homepage": "https://github.com/jl-delife/pressebereich#readme"
+}
