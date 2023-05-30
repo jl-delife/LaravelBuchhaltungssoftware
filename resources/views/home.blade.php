@@ -21,7 +21,7 @@ $transactionSuccess = session('transactionSuccess');
     
     <title>Home</title>
 
-    <link rel="stylesheet" href="{{ asset('/css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/home2.css') }}">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -39,7 +39,7 @@ $transactionSuccess = session('transactionSuccess');
     </header>
 
     <main>
-        <h2 id="welcome">Willkommen <strong>{{ session('name') }}</strong>, dein aktueller Kontostand beträgt {{ session('balance') > 0 ? '+' : ''}}<strong>{{ session('balance') }} Euro</strong></h2>
+        <h2 id="welcome">Willkommen <strong>{{ session('name') }}</strong>, dein aktueller Kontostand beträgt {{ session('balance') > 0 ? '+' : ''}}<strong>{{ number_format(session('balance'), 2) }} Euro</strong></h2>
 
         <section class="showTransactionsArea">
             <div class="transactionsAreaHeader">
@@ -123,7 +123,7 @@ $transactionSuccess = session('transactionSuccess');
             newTransaction.innerHTML = `${valueIsPositive(transaction.amount) ? '+' : '-'}
                 <span class="additionalInfo">Name:</span> <strong>${transaction.name}</strong> |
                 <span class="additionalInfo">Datum:</span> <strong>${convertedDate}</strong> |
-                <span class="additionalInfo">Betrag:</span> <strong>${transaction.amount} Euro</strong>`;
+                <span class="additionalInfo">Betrag:</span> <strong>${(transaction.amount).toFixed(2)} Euro</strong>`;
             return newTransaction;
         };
 

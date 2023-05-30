@@ -1,3 +1,11 @@
+button {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.76);
+  border-radius: 10px;
+  padding-inline: 1rem;
+  cursor: pointer;
+}
+
 body,
 html {
   font-family: "Inter", sans-serif;
@@ -34,7 +42,7 @@ html header .header-content h1::after {
   left: 0;
   width: 44.3%;
   height: 10%;
-  background-color: white;
+  background: white;
 }
 body header .header-content a,
 html header .header-content a {
@@ -58,14 +66,6 @@ html main h2 {
   margin: 0;
   font-weight: 400;
   font-size: clamp(1.2rem, 5vw, 1.5rem);
-}
-body main button,
-html main button {
-  color: white;
-  background-color: rgba(0, 0, 0, 0.76);
-  border-radius: 10px;
-  padding-inline: 1rem;
-  cursor: pointer;
 }
 body main .showTransactionsArea .transactionsAreaHeader,
 html main .showTransactionsArea .transactionsAreaHeader {
@@ -287,11 +287,11 @@ html .negative {
 }
 body .positiveBc,
 html .positiveBc {
-  background-color: #459332;
+  background-color: green;
 }
 body .negativeBc,
 html .negativeBc {
-  background-color: #cd4343;
+  background-color: red;
 }
 body .toastNotification,
 html .toastNotification {
@@ -320,4 +320,4 @@ html #app {
   margin-top: 0px;
 }
 
-/*# sourceMappingURL=home.css.map */
+/*# sourceMappingURL=home2.css.map */
