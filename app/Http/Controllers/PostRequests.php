@@ -77,7 +77,7 @@ class PostRequests extends Controller
     {
         $username = $request->input('username');
         $password = $request->input('password');
-        $transactionId = $request->input(('transactionId'));
+        $transactionId = $request->input('userId');
         $newTransaction = false;
 
         if (isset($username) && $this->invalidVariableLength($username, $password)) {
@@ -137,11 +137,65 @@ class PostRequests extends Controller
             ->where('userID', $id)
             ->get();
 
+
         $transactions = [];
 
         foreach ($transactionResult as $transaction) {
             $transactions[] = [$transaction->name, $transaction->date, $transaction->amount];
         }
+
+
+        //dd($categoryResult[0]->category);
+
+        function getColor($category)
+        {
+            switch ($category) {
+                case 'food':
+                    return '#ff0000';
+                case 'restaurants':
+                    return '#0000ff';
+                case 'shopping':
+                    return '#00ff00';
+                case 'transportation':
+                    return '#ffff00';
+                case 'living':
+                    return '#ffa500';
+                case 'travel':
+                    return '#800080';
+                case 'health':
+                    return '#00ffff';
+                case 'education':
+                    return '#ffc0cb';
+                case 'wage':
+                    return '#808080';
+                case 'other':
+                    return '#008080';
+            }
+        }
+
+        $totoalAmountAndCategoryOfAllTransactions = DB::connection('mysql')
+            ->table('transactions')
+            ->select('amount', 'category')
+            ->where('userID', $id)
+            ->get();
+
+        $existingCategoriesAmountAndCategory = [];
+
+        foreach ($totoalAmountAndCategoryOfAllTransactions as $transaction) {
+            if (!array_key_exists($transaction->category, $existingCategoriesAmountAndCategory)) {
+                $existingCategoriesAmountAndCategory[$transaction->category] = [
+                    "amount" => $transaction->amount,
+                    "color" => getColor($transaction->category),
+                    "count" => 1,
+                ];
+            } else {
+                $existingCategoriesAmountAndCategory[$transaction->category]["amount"] += $transaction->amount;
+                $existingCategoriesAmountAndCategory[$transaction->category]["count"]++;
+            }
+        }
+
+        //dd($existingCategoriesAmountAndCategory);
+
 
         return redirect()->route('home')->with([
             'id' => $id,
@@ -149,6 +203,7 @@ class PostRequests extends Controller
             'balance' => $balance,
             'transactions' => $transactions,
             'transactionSuccess' => $newTransaction ? 'Transaktion erfolgreich hinzugefügt.' : null,
+            'categoryInformation' => $existingCategoriesAmountAndCategory,
         ]);
     }
 
@@ -158,7 +213,191 @@ class PostRequests extends Controller
         $name = $request->input('transactionName');
         $amount = str_replace(',', '.', $request->input('transactionAmount'));
         $date = $request->input('transactionDate');
-        $id = $request->input('transactionId');
+        $userId = $request->input('userId');
+        $transactionId = $request->input('transactionId');
+        $category = $request->input('category');
+
+        // Funktion zur Ermittlung der Kategorie
+        function getCategory($name)
+        {
+            $transactionCategories = [
+                "food" => [
+                    "lidl",
+                    "aldi",
+                    "rewe",
+                    "edeka",
+                    "netto",
+                    "penny",
+                    "kaufland",
+                    "real",
+                    "norma",
+                    "marktkauf",
+                    "lebensmittel",
+                    "supermarkt",
+                    "discounter",
+                    "nahrungsmittel",
+                    "einkauf",
+                    "supermarkt",
+                    "lebensmittelgeschäft",
+                ],
+                "restaurants" => [
+                    "restaurant",
+                    "café",
+                    "imbiss",
+                    "pizzeria",
+                    "sushi-bar",
+                    "bäckerei",
+                    "eisdiele",
+                    "döner",
+                    "gaststätte",
+                    "fast-food-restaurant",
+                    "gourmet",
+                    "speiselokal",
+                    "brasserie",
+                    "steakhaus",
+                    "barbecue",
+                    "kantine",
+                ],
+                "shopping" => [
+                    "h&m",
+                    "zara",
+                    "media markt",
+                    "saturn",
+                    "büromarkt",
+                    "drogerie",
+                    "schuhgeschäft",
+                    "elektronikladen",
+                    "möbelhaus",
+                    "baumarkt",
+                    "bekleidungsgeschäft",
+                    "kaufhaus",
+                    "einzelhandel",
+                    "boutique",
+                    "sportgeschäft",
+                ],
+                "transportation" => [
+                    "tankstelle",
+                    "fahrkarten",
+                    "autowerkstatt",
+                    "fahrschule",
+                    "parkgebühren",
+                    "öffentlicher nahverkehr",
+                    "mautgebühren",
+                    "taxi",
+                    "autovermietung",
+                    "flughafentransfer",
+                    "bahn",
+                    "bus",
+                    "bahnreisen",
+                    "fluglinie",
+                    "reiseagentur",
+                ],
+                "living" => [
+                    "miete",
+                    "hypothek",
+                    "stromrechnung",
+                    "wasserrechnung",
+                    "gasrechnung",
+                    "müllabfuhrgebühren",
+                    "hausmeisterdienste",
+                    "gebäudeversicherung",
+                    "wohnungsbaugenossenschaft",
+                    "hausverwaltung",
+                    "möbel",
+                    "wohnungseinrichtung",
+                    "immobilien",
+                    "haus",
+                    "gartenpflege",
+                ],
+                "travel" => [
+                    "flugbuchung",
+                    "hotelreservierung",
+                    "reisebüro",
+                    "bahntickets",
+                    "campingplatz",
+                    "mietwagen",
+                    "ferienhausvermietung",
+                    "rundreise",
+                    "kreuzfahrt",
+                    "wanderreise",
+                    "urlaub",
+                    "ferien",
+                    "ausflug",
+                    "reiseveranstalter",
+                    "hotel",
+                ],
+                "health" => [
+                    "arztpraxis",
+                    "apotheke",
+                    "krankenhaus",
+                    "zahnarzt",
+                    "augenarzt",
+                    "physiotherapie",
+                    "krankenversicherung",
+                    "wellnesscenter",
+                    "orthopädieschuhtechnik",
+                    "hörgeräteakustiker",
+                    "medikamente",
+                    "gesundheitswesen",
+                    "therapie",
+                    "krankenkasse",
+                    "gesundheitsclub",
+                ],
+                "education" => [
+                    "nachhilfe",
+                    "buchhandlung",
+                    "schulbedarf",
+                    "kursgebühren",
+                    "universität",
+                    "fahrschule",
+                    "musikschule",
+                    "sprachkurs",
+                    "berufsschule",
+                    "tanzschule",
+                    "schule",
+                    "bildungseinrichtung",
+                    "weiterbildung",
+                    "lernen",
+                    "seminar",
+                ],
+                "entertainment" => [
+                    "kino",
+                    "konzerttickets",
+                    "fitnessstudio",
+                    "theater",
+                    "freizeitpark",
+                    "sportverein",
+                    "veranstaltung",
+                    "club",
+                    "museum",
+                    "zoo",
+                    "spaß",
+                ],
+                "wage" => [
+                    "lohn",
+                    "gehalt",
+                    "einkommen",
+                    "verdienst",
+                    "bezahlung",
+                    "geld",
+                    "vergütung",
+                ],
+            ];
+
+
+            $words = explode(" ", $name);
+
+            foreach ($words as $word) {
+                foreach ($transactionCategories as $category => $names) {
+                    if (in_array(strtolower($word), $names)) {
+                        return $category;
+                    }
+                }
+            }
+
+            return "other";
+        }
+
 
         // Funktion zur Überprüfung des Datumsformats
         function isDate($input)
@@ -180,30 +419,50 @@ class PostRequests extends Controller
             return (strlen($input) >= 1 && strlen($input) <= 25 && strlen(trim($input)) >= 1);
         }
 
+        $category == 'automatic' ? $category = getCategory($name) : '';
+
         if (isDate($date) && isValidMoneyAmount($amount) && isValidTransactionName($name)) {
-            // Berechnet das neue Guthaben basierend auf der Transaktion
-            $oldBalance = (float)DB::connection('mysql')
-                ->table('users')
-                ->select('balance')
-                ->where('id', $id)
-                ->get()[0]->balance;
+            if ($transactionId == -1) {
+                // Fügt die Transaktion in die Datenbank ein
+                $insertTransaction = DB::connection('mysql')
+                    ->table('transactions')
+                    ->insert([
+                        'name' => $name,
+                        'date' => $date,
+                        'amount' => $amount,
+                        'userID' => $userId,
+                        'category' => $category,
+                    ]);
+            } else {
+                // Fügt die Transaktion in die Datenbank ein
+                $updateTransaction = DB::connection('mysql')
+                    ->table('transactions')
+                    ->where('id', $transactionId)
+                    ->update([
+                        'name' => $name,
+                        'date' => $date,
+                        'amount' => $amount,
+                        'userID' => $userId,
+                        'category' => $category,
+                    ]);
+            }
 
-            $newBalance = $oldBalance + (float)$amount;
-
-            // Fügt die Transaktion in die Datenbank ein
-            $insertTransaction = DB::connection('mysql')
+            $balance = DB::connection('mysql')
                 ->table('transactions')
-                ->insert([
-                    'name' => $name,
-                    'date' => $date,
-                    'amount' => $amount,
-                    'userID' => $id,
-                ]);
+                ->where('userID', $userId)
+                ->select('amount')
+                ->get();
+
+            $newBalance = 0;
+
+            foreach ($balance as $item) {
+                $newBalance += (float)$item->amount;
+            }
 
             // Aktualisiert das Guthaben des Benutzers
             $changeUserBalance = DB::connection('mysql')
                 ->table('users')
-                ->where('id', $id)
+                ->where('id', $userId)
                 ->update(['balance' => $newBalance]);
 
             return $this->LoginRequest($request);
@@ -212,5 +471,42 @@ class PostRequests extends Controller
                 'error' => 'Ungültiges Datum, ungültiger Geldbetrag oder ungültige Länge!',
             ]);
         }
+    }
+
+    public function deleteRequest(Request $request)
+    {
+        $userId = $request->input('userId');
+        $transactionIdsString = $request->input('transactions');
+
+        $transactionIdsString = trim($transactionIdsString, '""');
+
+        $transactionIds = json_decode('[' . $transactionIdsString . ']', true);
+
+        foreach ($transactionIds[0] as $transactionId) {
+            $deleteTransaction = DB::connection('mysql')
+                ->table('transactions')
+                ->where('id', $transactionId)
+                ->delete();
+        }
+
+        $balance = DB::connection('mysql')
+            ->table('transactions')
+            ->where('userID', $userId)
+            ->select('amount')
+            ->get();
+
+        $newBalance = 0;
+
+        foreach ($balance as $item) {
+            $newBalance += (float)$item->amount;
+        }
+
+        // Aktualisiert das Guthaben des Benutzers
+        $changeUserBalance = DB::connection('mysql')
+            ->table('users')
+            ->where('id', $userId)
+            ->update(['balance' => $newBalance]);
+
+        return $this->LoginRequest($request);
     }
 }

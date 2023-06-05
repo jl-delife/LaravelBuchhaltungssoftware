@@ -27,6 +27,12 @@ Route::post('/transactionRequest', [PostRequests::class, 'transactionsRequest'])
 
 Route::post('/loginRequest', [PostRequests::class, 'LoginRequest']);
 
+Route::post('/deleteRequest', [PostRequests::class, 'deleteRequest']);
+
+// Route::post('/deleteRequest', function () {
+//     return view('login');
+// });
+
 Route::get('/home', function () {
     return view('home');
 })->name('home');

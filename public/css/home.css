@@ -1,3 +1,11 @@
+button {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.76);
+  border-radius: 10px;
+  padding-inline: 1rem;
+  cursor: pointer;
+}
+
 body,
 html {
   font-family: "Inter", sans-serif;
@@ -34,7 +42,7 @@ html header .header-content h1::after {
   left: 0;
   width: 44.3%;
   height: 10%;
-  background-color: white;
+  background: white;
 }
 body header .header-content a,
 html header .header-content a {
@@ -58,14 +66,6 @@ html main h2 {
   margin: 0;
   font-weight: 400;
   font-size: clamp(1.2rem, 5vw, 1.5rem);
-}
-body main button,
-html main button {
-  color: white;
-  background-color: rgba(0, 0, 0, 0.76);
-  border-radius: 10px;
-  padding-inline: 1rem;
-  cursor: pointer;
 }
 body main .showTransactionsArea .transactionsAreaHeader,
 html main .showTransactionsArea .transactionsAreaHeader {
@@ -269,6 +269,103 @@ html main .newTransaction article form #submitNewTransaction {
     margin-inline: auto;
   }
 }
+body main .evaluation,
+html main .evaluation {
+  display: none;
+}
+body main .evaluation .transactionsAreaHeader,
+html main .evaluation .transactionsAreaHeader {
+  display: flex;
+  padding-block-end: 0.3rem;
+}
+body main .evaluation article,
+html main .evaluation article {
+  width: calc(100% - 2rem);
+  height: 40vh;
+  background-color: #d9d9d9;
+  border-radius: 10px;
+  padding-inline: 1rem;
+  padding-block: 0.8rem;
+}
+body main .evaluation article form,
+html main .evaluation article form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  padding-block-end: 1rem;
+}
+body main .evaluation article form .inputs,
+html main .evaluation article form .inputs {
+  display: flex;
+  column-gap: 2rem;
+}
+body main .evaluation article form .inputs div,
+html main .evaluation article form .inputs div {
+  display: flex;
+  flex-direction: column;
+}
+body main .evaluation article form .inputs div label,
+html main .evaluation article form .inputs div label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+body main .evaluation article form .inputs div input,
+html main .evaluation article form .inputs div input {
+  width: 12rem;
+  height: 1.5rem;
+  border: none;
+  border-radius: 10px;
+  padding-inline: 0.5rem;
+}
+body main .evaluation article form #submitNewTransaction,
+html main .evaluation article form #submitNewTransaction {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.76);
+  border-radius: 10px;
+  padding-inline: 1rem;
+  height: 1.8rem;
+  margin-inline-start: 0.5rem;
+  cursor: pointer;
+  width: fit-content;
+  margin: 0;
+}
+body main .evaluation article p,
+html main .evaluation article p {
+  font-size: 0.8rem;
+}
+@media screen and (max-width: 780px) {
+  body main .evaluation article,
+html main .evaluation article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  body main .evaluation article form,
+html main .evaluation article form {
+    width: 100%;
+  }
+  body main .evaluation article form .inputs,
+html main .evaluation article form .inputs {
+    align-items: center;
+    flex-direction: column;
+    row-gap: 1rem;
+    width: 100%;
+  }
+  body main .evaluation article form .inputs div,
+html main .evaluation article form .inputs div {
+    width: 100%;
+    max-width: 30rem;
+  }
+  body main .evaluation article form .inputs div input,
+html main .evaluation article form .inputs div input {
+    width: calc(100% - 1rem);
+    max-width: 30rem;
+  }
+  body main .evaluation article form #submitNewTransaction,
+html main .evaluation article form #submitNewTransaction {
+    margin-inline: auto;
+  }
+}
 body .fs-12,
 html .fs-12 {
   font-size: 1.2rem;
@@ -287,11 +384,11 @@ html .negative {
 }
 body .positiveBc,
 html .positiveBc {
-  background-color: #459332;
+  background-color: green;
 }
 body .negativeBc,
 html .negativeBc {
-  background-color: #cd4343;
+  background-color: red;
 }
 body .toastNotification,
 html .toastNotification {
