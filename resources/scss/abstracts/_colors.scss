@@ -1,0 +1,30 @@
+$colors: (
+    theme: (
+        0: white,
+        300: #d9d9d9,
+        400: #afafaf,
+        500: rgba(0, 0, 0, 0.76),
+        600: black,
+    ),
+
+    special: (
+        700: green,
+        800: red,
+        900: #6eff49,
+        1000: #ff3b3b,
+    ),
+
+    categories: (
+        100: #ff0000,
+        restaurants: #0000ff,
+        shopping: #00ff00,
+        transportation: #ffff00,
+        living: #ffa500,
+        travel: #800080,
+        health: #00ffff,
+        education: #ffc0cb,
+        entertainment: #a52a2a,
+        wage: #808080,
+        other: #008080,
+    ),
+);

@@ -1,5 +1,4 @@
 <script setup>
-
 let getToken = () => {
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
     const id = document.querySelector('meta[name="userId"]').getAttribute('content');
@@ -44,9 +43,6 @@ let resetForm = () => {
   transactionAmountLabel.style.color = 'black';
   transactionDateLabel.style.color = 'black';
 
-  document.getElementById('transactionAction').innerHTML = ('Neue Transaktion:');
-  document.getElementById('submitNewTransaction').value = ('Transaktion hinzufügen');
-
   document.getElementById('form').reset();
 }
 
@@ -58,9 +54,9 @@ const validateAmountInput = (amount) => {
 </script>
 
 <template>
-<section class="newTransaction">
+<section class="editTransaction">
             <div class="transactionsAreaHeader">
-                <h2 id="transactionAction">Neue Transaktion:</h2>
+                <h2>Transaktion bearbeiten2:</h2>
             </div>        
     <article>
         <form v-on:submit.prevent="getToken" method="POST" action="/transactionRequest" id="form">
@@ -100,8 +96,7 @@ const validateAmountInput = (amount) => {
             </div>
 
             <input type="hidden" name="_token" id="token">
-            <input type="hidden" name="userId" id="id">
-            <input type="hidden" id="transactionId" name="transactionId" value="-1">
+            <input type="hidden" name="transactionId" id="id">
             <input v-on:click="checkInputs" id="submitNewTransaction" type="submit" value="Transaktion hinzufügen">
         </form>
 

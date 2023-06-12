@@ -87,37 +87,67 @@ body main .showTransactionsArea article p,
 html main .showTransactionsArea article p {
   font-size: 1.2rem;
 }
-body main .showTransactionsArea .setRange,
-html main .showTransactionsArea .setRange {
+body main .showTransactionsArea article p button,
+html main .showTransactionsArea article p button {
+  color: white;
+  background-color: rgba(70, 70, 70, 0.76);
+  border-radius: 10px;
+  padding-inline: 1rem;
+  cursor: pointer;
+  transition: background-color 500ms;
+}
+body main .showTransactionsArea article p button:hover,
+html main .showTransactionsArea article p button:hover {
+  background-color: rgba(162, 162, 162, 0.76);
+}
+body main .showTransactionsArea article .checkbox,
+body main .showTransactionsArea article .sign,
+html main .showTransactionsArea article .checkbox,
+html main .showTransactionsArea article .sign {
+  display: none;
+}
+body main .showTransactionsArea article .show,
+html main .showTransactionsArea article .show {
+  display: unset !important;
+}
+body main .showTransactionsArea .rangeAndDelete,
+html main .showTransactionsArea .rangeAndDelete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+body main .showTransactionsArea .rangeAndDelete .setRange,
+html main .showTransactionsArea .rangeAndDelete .setRange {
   display: flex;
   align-items: center;
   column-gap: 1rem;
+  width: fit-content;
 }
-body main .showTransactionsArea .setRange form,
-html main .showTransactionsArea .setRange form {
+body main .showTransactionsArea .rangeAndDelete .setRange form,
+html main .showTransactionsArea .rangeAndDelete .setRange form {
   display: flex;
   align-items: center;
   column-gap: 0.5rem;
 }
-body main .showTransactionsArea .setRange form div,
-html main .showTransactionsArea .setRange form div {
+body main .showTransactionsArea .rangeAndDelete .setRange form div,
+html main .showTransactionsArea .rangeAndDelete .setRange form div {
   display: flex;
   flex-direction: column;
 }
-body main .showTransactionsArea .setRange form div label,
-html main .showTransactionsArea .setRange form div label {
+body main .showTransactionsArea .rangeAndDelete .setRange form div label,
+html main .showTransactionsArea .rangeAndDelete .setRange form div label {
   display: none;
   font-size: 0.7rem;
 }
-body main .showTransactionsArea .setRange form div input,
-html main .showTransactionsArea .setRange form div input {
+body main .showTransactionsArea .rangeAndDelete .setRange form div input,
+html main .showTransactionsArea .rangeAndDelete .setRange form div input {
   border: none;
   border-radius: 10px;
   height: 1.5rem;
   padding-inline: 0.5rem;
 }
-body main .showTransactionsArea .setRange form #submit,
-html main .showTransactionsArea .setRange form #submit {
+body main .showTransactionsArea .rangeAndDelete .setRange form #submit,
+html main .showTransactionsArea .rangeAndDelete .setRange form #submit {
   color: white;
   background-color: rgba(0, 0, 0, 0.76);
   border-radius: 10px;
@@ -127,35 +157,40 @@ html main .showTransactionsArea .setRange form #submit {
   cursor: pointer;
 }
 @media screen and (max-width: 780px) {
-  body main .showTransactionsArea .setRange,
-html main .showTransactionsArea .setRange {
+  body main .showTransactionsArea .rangeAndDelete .setRange,
+html main .showTransactionsArea .rangeAndDelete .setRange {
     flex-direction: column;
   }
-  body main .showTransactionsArea .setRange form,
-html main .showTransactionsArea .setRange form {
+  body main .showTransactionsArea .rangeAndDelete .setRange form,
+html main .showTransactionsArea .rangeAndDelete .setRange form {
     flex-direction: column;
     width: 100%;
     row-gap: 0.8rem;
   }
-  body main .showTransactionsArea .setRange form h2,
-html main .showTransactionsArea .setRange form h2 {
+  body main .showTransactionsArea .rangeAndDelete .setRange form h2,
+html main .showTransactionsArea .rangeAndDelete .setRange form h2 {
     display: none;
   }
-  body main .showTransactionsArea .setRange form div,
-html main .showTransactionsArea .setRange form div {
+  body main .showTransactionsArea .rangeAndDelete .setRange form div,
+html main .showTransactionsArea .rangeAndDelete .setRange form div {
     translate: unset;
     width: 100%;
     max-width: 30rem;
   }
-  body main .showTransactionsArea .setRange form div label,
-html main .showTransactionsArea .setRange form div label {
+  body main .showTransactionsArea .rangeAndDelete .setRange form div label,
+html main .showTransactionsArea .rangeAndDelete .setRange form div label {
     display: block;
   }
-  body main .showTransactionsArea .setRange form div input,
-html main .showTransactionsArea .setRange form div input {
+  body main .showTransactionsArea .rangeAndDelete .setRange form div input,
+html main .showTransactionsArea .rangeAndDelete .setRange form div input {
     width: 100%;
     max-width: 30rem;
   }
+}
+body main .showTransactionsArea .rangeAndDelete button,
+html main .showTransactionsArea .rangeAndDelete button {
+  background-color: rgba(255, 0, 0, 0.6392156863);
+  height: fit-content;
 }
 @media screen and (max-width: 500px) {
   body main .showTransactionsArea .transactionsAreaHeader,
@@ -173,16 +208,22 @@ html main .showTransactionsArea .transactionsAreaHeader h2 {
   }
 }
 body main .newTransaction,
-html main .newTransaction {
+body main .editTransaction,
+html main .newTransaction,
+html main .editTransaction {
   display: none;
 }
 body main .newTransaction .transactionsAreaHeader,
-html main .newTransaction .transactionsAreaHeader {
+body main .editTransaction .transactionsAreaHeader,
+html main .newTransaction .transactionsAreaHeader,
+html main .editTransaction .transactionsAreaHeader {
   display: flex;
   padding-block-end: 0.3rem;
 }
 body main .newTransaction article,
-html main .newTransaction article {
+body main .editTransaction article,
+html main .newTransaction article,
+html main .editTransaction article {
   width: calc(100% - 2rem);
   height: 40vh;
   background-color: #d9d9d9;
@@ -191,29 +232,39 @@ html main .newTransaction article {
   padding-block: 0.8rem;
 }
 body main .newTransaction article form,
-html main .newTransaction article form {
+body main .editTransaction article form,
+html main .newTransaction article form,
+html main .editTransaction article form {
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
   padding-block-end: 1rem;
 }
 body main .newTransaction article form .inputs,
-html main .newTransaction article form .inputs {
+body main .editTransaction article form .inputs,
+html main .newTransaction article form .inputs,
+html main .editTransaction article form .inputs {
   display: flex;
   column-gap: 2rem;
 }
 body main .newTransaction article form .inputs div,
-html main .newTransaction article form .inputs div {
+body main .editTransaction article form .inputs div,
+html main .newTransaction article form .inputs div,
+html main .editTransaction article form .inputs div {
   display: flex;
   flex-direction: column;
 }
 body main .newTransaction article form .inputs div label,
-html main .newTransaction article form .inputs div label {
+body main .editTransaction article form .inputs div label,
+html main .newTransaction article form .inputs div label,
+html main .editTransaction article form .inputs div label {
   font-size: 0.9rem;
   font-weight: 500;
 }
 body main .newTransaction article form .inputs div input,
-html main .newTransaction article form .inputs div input {
+body main .editTransaction article form .inputs div input,
+html main .newTransaction article form .inputs div input,
+html main .editTransaction article form .inputs div input {
   width: 12rem;
   height: 1.5rem;
   border: none;
@@ -221,7 +272,9 @@ html main .newTransaction article form .inputs div input {
   padding-inline: 0.5rem;
 }
 body main .newTransaction article form #submitNewTransaction,
-html main .newTransaction article form #submitNewTransaction {
+body main .editTransaction article form #submitNewTransaction,
+html main .newTransaction article form #submitNewTransaction,
+html main .editTransaction article form #submitNewTransaction {
   color: white;
   background-color: rgba(0, 0, 0, 0.76);
   border-radius: 10px;
@@ -233,39 +286,53 @@ html main .newTransaction article form #submitNewTransaction {
   margin: 0;
 }
 body main .newTransaction article p,
-html main .newTransaction article p {
+body main .editTransaction article p,
+html main .newTransaction article p,
+html main .editTransaction article p {
   font-size: 0.8rem;
 }
 @media screen and (max-width: 780px) {
   body main .newTransaction article,
-html main .newTransaction article {
+body main .editTransaction article,
+html main .newTransaction article,
+html main .editTransaction article {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   body main .newTransaction article form,
-html main .newTransaction article form {
+body main .editTransaction article form,
+html main .newTransaction article form,
+html main .editTransaction article form {
     width: 100%;
   }
   body main .newTransaction article form .inputs,
-html main .newTransaction article form .inputs {
+body main .editTransaction article form .inputs,
+html main .newTransaction article form .inputs,
+html main .editTransaction article form .inputs {
     align-items: center;
     flex-direction: column;
     row-gap: 1rem;
     width: 100%;
   }
   body main .newTransaction article form .inputs div,
-html main .newTransaction article form .inputs div {
+body main .editTransaction article form .inputs div,
+html main .newTransaction article form .inputs div,
+html main .editTransaction article form .inputs div {
     width: 100%;
     max-width: 30rem;
   }
   body main .newTransaction article form .inputs div input,
-html main .newTransaction article form .inputs div input {
+body main .editTransaction article form .inputs div input,
+html main .newTransaction article form .inputs div input,
+html main .editTransaction article form .inputs div input {
     width: calc(100% - 1rem);
     max-width: 30rem;
   }
   body main .newTransaction article form #submitNewTransaction,
-html main .newTransaction article form #submitNewTransaction {
+body main .editTransaction article form #submitNewTransaction,
+html main .newTransaction article form #submitNewTransaction,
+html main .editTransaction article form #submitNewTransaction {
     margin-inline: auto;
   }
 }
@@ -276,10 +343,14 @@ html main .evaluation {
 body main .evaluation .transactionsAreaHeader,
 html main .evaluation .transactionsAreaHeader {
   display: flex;
+  justify-content: space-between;
   padding-block-end: 0.3rem;
 }
 body main .evaluation article,
 html main .evaluation article {
+  display: flex;
+  justify-content: center;
+  column-gap: 3rem;
   width: calc(100% - 2rem);
   height: 40vh;
   background-color: #d9d9d9;
@@ -287,51 +358,77 @@ html main .evaluation article {
   padding-inline: 1rem;
   padding-block: 0.8rem;
 }
-body main .evaluation article form,
-html main .evaluation article form {
-  display: flex;
-  flex-direction: column;
-  row-gap: 1rem;
-  padding-block-end: 1rem;
-}
-body main .evaluation article form .inputs,
-html main .evaluation article form .inputs {
-  display: flex;
-  column-gap: 2rem;
-}
-body main .evaluation article form .inputs div,
-html main .evaluation article form .inputs div {
-  display: flex;
-  flex-direction: column;
-}
-body main .evaluation article form .inputs div label,
-html main .evaluation article form .inputs div label {
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-body main .evaluation article form .inputs div input,
-html main .evaluation article form .inputs div input {
-  width: 12rem;
-  height: 1.5rem;
-  border: none;
-  border-radius: 10px;
-  padding-inline: 0.5rem;
-}
-body main .evaluation article form #submitNewTransaction,
-html main .evaluation article form #submitNewTransaction {
-  color: white;
-  background-color: rgba(0, 0, 0, 0.76);
-  border-radius: 10px;
-  padding-inline: 1rem;
-  height: 1.8rem;
-  margin-inline-start: 0.5rem;
-  cursor: pointer;
-  width: fit-content;
-  margin: 0;
-}
 body main .evaluation article p,
 html main .evaluation article p {
   font-size: 0.8rem;
+  margin: 0;
+}
+body main .evaluation article .circleChart,
+html main .evaluation article .circleChart {
+  display: flex;
+  justify-content: center;
+  width: 374px;
+  height: 100%;
+}
+body main .evaluation article .legends,
+html main .evaluation article .legends {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  height: 100%;
+}
+body main .evaluation article .legends p,
+html main .evaluation article .legends p {
+  display: none;
+}
+body main .evaluation article .legends span,
+html main .evaluation article .legends span {
+  font-size: 1.2rem;
+}
+body main .evaluation article .legends #food,
+html main .evaluation article .legends #food {
+  color: #ff0000;
+}
+body main .evaluation article .legends #restaurants,
+html main .evaluation article .legends #restaurants {
+  color: #0000ff;
+}
+body main .evaluation article .legends #shopping,
+html main .evaluation article .legends #shopping {
+  color: #00ff00;
+}
+body main .evaluation article .legends #transportation,
+html main .evaluation article .legends #transportation {
+  color: #ffff00;
+}
+body main .evaluation article .legends #living,
+html main .evaluation article .legends #living {
+  color: #ffa500;
+}
+body main .evaluation article .legends #travel,
+html main .evaluation article .legends #travel {
+  color: #800080;
+}
+body main .evaluation article .legends #health,
+html main .evaluation article .legends #health {
+  color: #00ffff;
+}
+body main .evaluation article .legends #education,
+html main .evaluation article .legends #education {
+  color: #ffc0cb;
+}
+body main .evaluation article .legends #entertainment,
+html main .evaluation article .legends #entertainment {
+  color: #a52a2a;
+}
+body main .evaluation article .legends #wage,
+html main .evaluation article .legends #wage {
+  color: #808080;
+}
+body main .evaluation article .legends #other,
+html main .evaluation article .legends #other {
+  color: #008080;
 }
 @media screen and (max-width: 780px) {
   body main .evaluation article,
@@ -416,5 +513,9 @@ body #app,
 html #app {
   margin-top: 0px;
 }
+body .d-none,
+html .d-none {
+  display: none;
+}
 
-/*# sourceMappingURL=home.css.map */
+/*# sourceMappingURL=home2.css.map */

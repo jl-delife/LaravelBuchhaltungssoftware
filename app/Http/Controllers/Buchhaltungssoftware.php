@@ -32,7 +32,7 @@ class Buchhaltungssoftware extends Controller
     {
         $transactions = DB::connection('mysql')
             ->table('transactions')
-            ->select('name', 'date', 'amount')
+            ->select('name', 'date', 'amount', 'id', 'category')
             ->where('userID', $userId)
             ->get();
 
