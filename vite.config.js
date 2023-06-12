@@ -25,5 +25,3 @@ export default defineConfig({
         }),
     ],
 });
-
-require = require("esm")(module);
