@@ -6,7 +6,7 @@
     "serve": "mix watch"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.3.0",
+    "@vitejs/plugin-vue": "^4.2.3",
     "axios": "^1.1.2",
     "laravel-mix": "^6.0.49",
     "laravel-vite-plugin": "^0.7.2",
