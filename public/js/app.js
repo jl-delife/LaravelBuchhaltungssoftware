@@ -17419,27 +17419,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
-/***/ "./resources/js/app.js":
-/*!*****************************!*\
-  !*** ./resources/js/app.js ***!
-  \*****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var _vueConverter_setRangeConverter_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./vueConverter/setRangeConverter.vue */ "./resources/js/vueConverter/setRangeConverter.vue");
-/* harmony import */ var _vueConverter_newTransactionConverter_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./vueConverter/newTransactionConverter.vue */ "./resources/js/vueConverter/newTransactionConverter.vue");
-/* harmony import */ var _vueConverter_editTransactionConverter_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./vueConverter/editTransactionConverter.vue */ "./resources/js/vueConverter/editTransactionConverter.vue");
-
-
-
-
-(0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)(_vueConverter_setRangeConverter_vue__WEBPACK_IMPORTED_MODULE_1__["default"]).mount("#vueSetRange");
-(0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)(_vueConverter_newTransactionConverter_vue__WEBPACK_IMPORTED_MODULE_2__["default"]).mount("#vueNewTransaction");
-(0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)(_vueConverter_editTransactionConverter_vue__WEBPACK_IMPORTED_MODULE_3__["default"]).mount("#editNewTransaction");
-
-/***/ }),
-
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -18130,6 +18109,27 @@ ${codeFrame}` : message);
 
 
 
+
+/***/ }),
+
+/***/ "./resources/js/app.js":
+/*!*****************************!*\
+  !*** ./resources/js/app.js ***!
+  \*****************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _vueConverter_setRangeConverter_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./vueConverter/setRangeConverter.vue */ "./resources/js/vueConverter/setRangeConverter.vue");
+/* harmony import */ var _vueConverter_newTransactionConverter_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./vueConverter/newTransactionConverter.vue */ "./resources/js/vueConverter/newTransactionConverter.vue");
+/* harmony import */ var _vueConverter_editTransactionConverter_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./vueConverter/editTransactionConverter.vue */ "./resources/js/vueConverter/editTransactionConverter.vue");
+
+
+
+
+(0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)(_vueConverter_setRangeConverter_vue__WEBPACK_IMPORTED_MODULE_1__["default"]).mount("#vueSetRange");
+(0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)(_vueConverter_newTransactionConverter_vue__WEBPACK_IMPORTED_MODULE_2__["default"]).mount("#vueNewTransaction");
+(0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)(_vueConverter_editTransactionConverter_vue__WEBPACK_IMPORTED_MODULE_3__["default"]).mount("#editNewTransaction");
 
 /***/ })
 
